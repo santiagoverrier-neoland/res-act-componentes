@@ -1,10 +1,14 @@
 ---
-
-const { nombre, puesto, experiencia } = Astro.props 
+import { Image } from 'astro:assets';
+const { imagen,nombre, puesto, experiencia } = Astro.props 
 ---
 
 <div class="card">
     <h2>{nombre}</h2>
+    <Image 
+        src={imagen}
+        alt={nombre}
+    />
     <strong>{puesto}</strong>
     <p>{experiencia}</p>
 </div>
