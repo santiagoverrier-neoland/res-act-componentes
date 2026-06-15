@@ -1,6 +1,6 @@
 ---
 import { Image } from 'astro:assets';
-const { imagen,nombre, puesto, experiencia } = Astro.props 
+const { imagen,nombre, puesto, experiencia, layout } = Astro.props 
 ---
 
 <div class="card">
@@ -8,6 +8,7 @@ const { imagen,nombre, puesto, experiencia } = Astro.props
     <Image 
         src={imagen}
         alt={nombre}
+        layout={layout}
     />
     <strong>{puesto}</strong>
     <p>{experiencia}</p>
