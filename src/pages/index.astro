@@ -1,5 +1,23 @@
 ---
-
+import CardEmpleado from "../components/CardEmpleado.astro"
+/*
+Empleado 2
+Nombre: Martín López
+Puesto: Backend Developer
+Experiencia: 5 años
+Empleado 3
+Nombre: Sofía Pérez
+Puesto: Diseñadora UX/UI
+Experiencia: 2 años
+Empleado 4
+Nombre: Juan Rodríguez
+Puesto: Full Stack Developer
+Experiencia: 4 años
+Empleado 5
+Nombre: Carla Fernández
+Puesto: Project Manager
+Experiencia: 6 años
+*/
 ---
 
 <html lang="en">
@@ -13,5 +31,31 @@
 	</head>
 	<body>
 		<h1>Astro</h1>
+
+		<CardEmpleado
+			nombre="Ana Gómez"
+			puesto="Frontend Developer"
+			experiencia="3 años"
+		/>
+		<CardEmpleado
+			nombre="Martín López"
+			puesto="Backend Developer"
+			experiencia="5 años"
+		/>
+		<CardEmpleado
+			nombre="Sofía Pérez"
+			puesto="Diseñadora UX/UI"
+			experiencia="2 años"
+		/>
+		<CardEmpleado
+			nombre="Juan Rodríguez"
+			puesto="Full Stack"
+			experiencia="4 años"
+		/>
+		<CardEmpleado
+			nombre="Carla Fernandez"
+			puesto="Project Manager"
+			experiencia="6 años"
+		/>
 	</body>
 </html>
