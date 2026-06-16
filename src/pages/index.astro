@@ -43,7 +43,12 @@ const datos = await respuesta.json();
         datos.map(function (empleado) {
           const { name, email, website, id } = empleado;
           return (
-            <CardEmpleado id={id} name={name} email={email} website={website} />
+            <CardEmpleado 
+				id={id} 
+				name={name} 
+				email={email} 
+				website={website} 
+			/>
           );
         })
       }
