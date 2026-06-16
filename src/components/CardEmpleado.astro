@@ -1,24 +1,27 @@
 ---
-import { Image } from 'astro:assets';
-const { imagen,nombre, puesto, experiencia, layout } = Astro.props 
-/*
-imagen="../assets/1.jpeg"
-nombre="Ana Gómez"
-puesto="Frontend Developer"
-experiencia="3 años"
-layout="constrained"
-
-*/
+const { name, email, website, id } = Astro.props;
 ---
 
+<style>
+  .card {
+    border: dotted 1px darkslategray;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+  }
+  .card h2 {
+    flex-grow: 2;
+  }
+
+  img {
+    width: 100%;
+    height: auto;
+  }
+</style>
+
 <div class="card">
-    <h2>{nombre}</h2>
-    <Image 
-        src={imagen}
-        alt={nombre}
-        layout={layout} 
-    />
-    <br>
-    <strong>{puesto}</strong>
-    <p>{experiencia} años</p>
+  <h2>{name}</h2>
+  <img src={"https://picsum.photos/300/300?random=" + id} alt="" />
+  <strong>{email}</strong>
+  <a href={"https://" + website}>{website}</a>
 </div>

@@ -3,64 +3,21 @@ import CardEmpleado from "../components/CardEmpleado.astro";
 import { Picture } from "astro:assets";
 import hero from "../assets/hero.jpg";
 
-// Avatares
-import persona1 from "../assets/1.jpeg";
-import persona2 from "../assets/2.jpeg";
-import persona3 from "../assets/3.jpeg";
-import persona4 from "../assets/4.jpeg";
-import persona5 from "../assets/5.jpeg";
-
-// Valores para layout (imágenes responsivas)
-/*
-	fixed: La imagen queda fija, sin redimensionarse
-	constrained: Se redimensiona si se achica
-	full-width: Llega al 100% del contenedor del padre  
-*/
-
-const data = [
-  {
-    nombre: "Ana Gómez",
-    imagen: persona1,
-    puesto: "Frontend Developer",
-    experiencia: 3,
-  },
-  {
-    nombre: "Martín López",
-    imagen: persona2,
-    puesto: "Backend Developer",
-    experiencia: 5,
-  },
-  {
-    nombre: "Sofía Pérez",
-    imagen: persona3,
-    puesto: "Diseñadora UX/UI",
-    experiencia: 2,
-  },
-  {
-    nombre: "Juan Rodríguez",
-    imagen: persona4,
-    puesto: "Full Stack Developer",
-    experiencia: 4,
-  },
-  {
-    nombre: "Carla Fernández",
-    imagen: persona5,
-    puesto: "Project Manager",
-    experiencia: 6,
-  },
-];
+// Data
+const respuesta = await fetch("https://jsonplaceholder.typicode.com/users");
+const datos = await respuesta.json();
 ---
 
 <style>
-.flex {
+  .flex {
     display: grid;
-	/* Indicar un máximo, que en éste caso, coincide con el tamaño original de la imagen */
-    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); 
+    /* Indicar un máximo, que en éste caso, coincide con el tamaño original de la imagen */
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 10px;
     width: 100%;
     max-width: 1200px;
-    margin: 0 auto; 
-}
+    margin: 0 auto;
+  }
 </style>
 
 <html lang="en">
@@ -83,21 +40,16 @@ const data = [
 
     <section class="flex">
       {
-        data.map(function (empleado) {
-          const { imagen, nombre, puesto, experiencia } = empleado;
+        datos.map(function (empleado) {
+          const { name, email, website, id } = empleado;
           return (
-            <CardEmpleado
-              imagen={imagen}
-              nombre={nombre}
-              puesto={puesto}
-              experiencia={experiencia}
-              layout="constrained"
-            />
+            <CardEmpleado id={id} name={name} email={email} website={website} />
           );
         })
       }
     </section>
+    <script>
+      console.log("ACA VIVE EN EL NAVEGADOR");
+    </script>
   </body>
 </html>
-
-
