@@ -1,14 +1,14 @@
 ---
-import CardEmpleado from "../components/CardEmpleado.astro"
-import { Picture } from 'astro:assets';
-import hero from "../assets/hero.jpg"
+import CardEmpleado from "../components/CardEmpleado.astro";
+import { Picture } from "astro:assets";
+import hero from "../assets/hero.jpg";
 
 // Avatares
-import persona1 from "../assets/1.jpeg"
-import persona2 from "../assets/2.jpeg"
-import persona3 from "../assets/3.jpeg"
-import persona4 from "../assets/4.jpeg"
-import persona5 from "../assets/5.jpeg"
+import persona1 from "../assets/1.jpeg";
+import persona2 from "../assets/2.jpeg";
+import persona3 from "../assets/3.jpeg";
+import persona4 from "../assets/4.jpeg";
+import persona5 from "../assets/5.jpeg";
 
 // Valores para layout (imágenes responsivas)
 /*
@@ -17,61 +17,87 @@ import persona5 from "../assets/5.jpeg"
 	full-width: Llega al 100% del contenedor del padre  
 */
 
+const data = [
+  {
+    nombre: "Ana Gómez",
+    imagen: persona1,
+    puesto: "Frontend Developer",
+    experiencia: 3,
+  },
+  {
+    nombre: "Martín López",
+    imagen: persona2,
+    puesto: "Backend Developer",
+    experiencia: 5,
+  },
+  {
+    nombre: "Sofía Pérez",
+    imagen: persona3,
+    puesto: "Diseñadora UX/UI",
+    experiencia: 2,
+  },
+  {
+    nombre: "Juan Rodríguez",
+    imagen: persona4,
+    puesto: "Full Stack Developer",
+    experiencia: 4,
+  },
+  {
+    nombre: "Carla Fernández",
+    imagen: persona5,
+    puesto: "Project Manager",
+    experiencia: 6,
+  },
+];
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<Picture 
-			src={hero}
-			alt="Encabezado"
-			layout='full-width'
-			formats={['avif', 'webp']} 
-		/>
-		<h1>Astro</h1>
+<style>
+.flex {
+    display: grid;
+	/* Indicar un máximo, que en éste caso, coincide con el tamaño original de la imagen */
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); 
+    gap: 10px;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto; 
+}
+</style>
 
-		<CardEmpleado
-			imagen={persona1}
-			nombre="Ana Gómez"
-			puesto="Frontend Developer"
-			experiencia="3 años"
-			layout="constrained"
-			formats={['avif', 'webp']} 
-		/>
-		<CardEmpleado
-			imagen={persona2}
-			nombre="Martín López"
-			puesto="Backend Developer"
-			experiencia="5 años"
-			layout="constrained"
-		/>
-		<CardEmpleado
-			imagen={persona3}
-			nombre="Sofía Pérez"
-			puesto="Diseñadora UX/UI"
-			experiencia="2 años"
-			layout="constrained"
-		/>
-		<CardEmpleado
-			imagen={persona4}
-			nombre="Juan Rodríguez"
-			puesto="Full Stack"
-			experiencia="4 años"
-			layout="constrained"
-		/>
-		<CardEmpleado
-			imagen={persona5}
-			nombre="Carla Fernandez"
-			puesto="Project Manager"
-			experiencia="6 años"
-			layout="constrained"
-		/>
-	</body>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Astro</title>
+  </head>
+  <body>
+    <Picture
+      src={hero}
+      alt="Encabezado"
+      layout="full-width"
+      formats={["avif", "webp"]}
+    />
+    <h1>Astro</h1>
+
+    <section class="flex">
+      {
+        data.map(function (empleado) {
+          const { imagen, nombre, puesto, experiencia } = empleado;
+          return (
+            <CardEmpleado
+              imagen={imagen}
+              nombre={nombre}
+              puesto={puesto}
+              experiencia={experiencia}
+              layout="constrained"
+            />
+          );
+        })
+      }
+    </section>
+  </body>
 </html>
+
+
